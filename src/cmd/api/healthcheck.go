@@ -6,15 +6,12 @@ import (
 )
 
 func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Request) {
-	_, err := fmt.Fprintln(w, "status: available")
-	if err != nil {
-		return
-	}
-	_, err = fmt.Fprintf(w, "environment: %s\n", app.config.env)
-	if err != nil {
-		return
-	}
-	_, err = fmt.Fprintf(w, "version: %s\n", version)
+	js := `{"status": "available", "environment": %q, "version": %q}`
+	js = fmt.Sprintf(js, app.config.env, version)
+
+	w.Header().Set("Content-Type", "application/json")
+
+	_, err := w.Write([]byte(js))
 	if err != nil {
 		return
 	}
