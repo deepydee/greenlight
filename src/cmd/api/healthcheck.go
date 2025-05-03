@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"net/http"
 )
 
@@ -18,6 +17,5 @@ func (app *application) healthcheckHandler(w http.ResponseWriter, r *http.Reques
 		http.Error(w, "The server encountered a problem and could not process your request", http.StatusInternalServerError)
 		return
 	}
-
 
 }
