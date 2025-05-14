@@ -4,6 +4,12 @@ export
 MIGRATIONS_PATH=./src/migrations
 DSN=postgres://$(DB_USER):$(DB_PASSWORD)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=disable
 
+up:
+	docker compose up -d
+
+down:
+	docker compose down
+
 migrate-up:
 	docker compose exec app migrate \
 		-path=$(MIGRATIONS_PATH) \
