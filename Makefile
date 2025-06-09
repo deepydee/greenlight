@@ -37,3 +37,5 @@ migrate-force:
 	docker compose exec app migrate \
 		-path=$(MIGRATIONS_PATH) \
 		-database="$(DSN)" force $$version
+
+

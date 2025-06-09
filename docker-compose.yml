@@ -8,6 +8,9 @@ services:
       - "8080:8080"
     volumes:
       - ./:/app
+    networks:
+      - default
+      - dev-proxy
     environment:
       - ADDR=:8080
     depends_on:
@@ -27,3 +30,8 @@ services:
 
 volumes:
   api-postgres:
+
+networks:
+  default:
+  dev-proxy:
+    external: true
