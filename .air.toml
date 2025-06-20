@@ -3,7 +3,7 @@ testdata_dir = "testdata"
 tmp_dir = "tmp"
 
 [build]
-  args_bin = ["-port=8080", "-env=development", "-limiter-burst=2", "-limiter-enabled=false"]
+  args_bin = ["-port=8080", "-env=development", "-limiter-burst=2", "-limiter-enabled=false", "-cors-trusted-origins=\"http://localhost:9000 http://localhost:9001\""]
   bin = "./tmp/main"
   cmd = "go build -o ./tmp/main ./src/cmd/api"
   delay = 1000
